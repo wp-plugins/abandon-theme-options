@@ -1,0 +1,21 @@
+#custom_doc{
+	width:600px;
+}
+#tracking_code, #footer_copy, .ab_textarea{
+	width:400px;
+	height: 100px;
+}
+.doc_code{
+	background: #eee;
+	border: 1px solid #ddd;
+	padding:10px;
+	overflow-x: scroll;
+}
+#icon-ab-custom{
+	background: url(icon-32.png) 0px 0px;
+}
+#doc_toc span{
+	display: block;
+	color:#666;
+	font-style: italic;
+}
