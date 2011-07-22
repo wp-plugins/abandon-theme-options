@@ -21,7 +21,7 @@
 Plugin Name: Abandon Themes Admin
 Plugin URI: http://abandon.ie/wordpress-admin-plugin
 Description: This is a plugin to allow a template designer to easily add options.
-Version: 0.5
+Version: 0.5.1
 Author: Abban Dunne
 Author URI: http://abandon.ie
 License: GPL2
@@ -29,7 +29,7 @@ License: GPL2
 
 //Adds the menu item
 function ab_custom_actions(){
-	$url=WP_PLUGIN_URL .'/ab-admin/icon.png';
+	$url=WP_PLUGIN_URL .'/abandon-theme-options/icon.png';
     add_menu_page("Theme Options", "Theme Options", 1, "ab_custom", "ab_custom", $url);
     add_submenu_page("ab_custom", "Documentation", "Documentation", 1, "doc", "ab_custom_docs");
 }
@@ -99,7 +99,7 @@ function ab_custom_docs(){
 //Adds style sheet to the admin panel
 function custom_admin_css(){
 	$x = ( 'rtl' == get_bloginfo( 'text_direction' ) ) ? 'left' : 'right';
-	echo '<link type="text/css" rel="stylesheet" href="' .WP_PLUGIN_URL .'/ab-admin/style-admin.css" />' . "\n";
+	echo '<link type="text/css" rel="stylesheet" href="' .WP_PLUGIN_URL .'/abandon-theme-options/style-admin.css" />' . "\n";
 }
 add_action('admin_head', 'custom_admin_css');
 
@@ -108,7 +108,7 @@ function ab_admin_attachments(){
 	wp_enqueue_script('media-upload');
 	wp_enqueue_script('thickbox');
 	//echo WP_PLUGIN_URL.'/ab-admin/js/script.js';		
-	wp_register_script('my-upload', WP_PLUGIN_URL.'/ab-admin/js/script.js', array('jquery','media-upload','thickbox'));
+	wp_register_script('my-upload', WP_PLUGIN_URL.'/abandon-theme-options/js/script.js', array('jquery','media-upload','thickbox'));
 	wp_enqueue_script('my-upload');
 }
 function ab_admin_styles() {

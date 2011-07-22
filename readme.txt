@@ -24,15 +24,14 @@ This is a WordPress plugin aimed at template designers who have mid range experi
 
 An answer to that question.
 
-= What about foo bar? =
-
-Answer to foo bar dilemma.
-
 == Screenshots ==
 
 1. Here's how the options look in the admin panel with everything turned on screenshot-1.(png|jpg|jpeg|gif). 
 
 == Changelog ==
+
+= 0.5.1 =
+Fixing a small url bug.
 
 = 0.5 =
 This is the first release. The plugin is in Beta while I test it.
