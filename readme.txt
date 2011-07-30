@@ -30,6 +30,9 @@ An answer to that question.
 
 == Changelog ==
 
+= 0.5.2 =
+Fixing the link to the documentation.
+
 = 0.5.1 =
 Fixing a small url bug.
 
