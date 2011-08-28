@@ -30,6 +30,9 @@ An answer to that question.
 
 == Changelog ==
 
+= 0.5.3 =
+Added functionality for dropdown boxes.
+
 = 0.5.2 =
 Fixing the link to the documentation.
 

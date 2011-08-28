@@ -13,7 +13,7 @@
 		<li><strong><a href="#social">Adding &amp; Removing Social Networks</a></strong> <span>On the WordPress user profile page there are a few social network text boxes that let the user enter their details, for some reason they don't include Twitter or facebook in there... what this option does is let you remove the useless ones like AIM and add in new ones. You can add any new ones you want and then you can print them out in as social network icons in your theme.</span></li>
 		<li><strong><a href="#tracking">Site Tracking Code</a></strong> <span>This is just a textbox to let the user enter their Google Analytics code or whatever.</span></li>
 		<li><strong><a href="#favicon">Favicon, Apple Icon &amp; Logo</a></strong> <span>This lets the user upload a custom favicon, an Apple Touch icon and a custom logo to the site.</span></li>
-		<li><strong><a href="#boxes">Checkboxes, Input Boxes and Textareas</a></strong> <span>These features let you add as many checkboxes, input boxes or textareas as you like. You can use it to add various other options that this plugin doesn't cover.</span></li>
+		<li><strong><a href="#boxes">Checkboxes, Input Boxes, Dropdowns and Textareas</a></strong> <span>These features let you add as many checkboxes, input boxes, dropdowns or textareas as you like. You can use it to add various other options that this plugin doesn't cover.</span></li>
 		<li><strong><a href="#ptypes">Custom Post Types &amp; Taxonomies</a></strong> <span>These features let you add as many checkboxes, input boxes or textareas as you like. You can use it to add various other options that this plugin doesn't cover.</span></li>
 		<li><strong><a href="#docs">Custom Documentation</a></strong> <span>This lets you add custom documentation that will replace this page on the users site.</span></li>
 	</ol>
@@ -190,15 +190,17 @@ $ab_options_set = array('favicon'=>true, 'apple_icon'=>true, 'logo'=>true);
 	<p>There is functionality built in for allowing you to add as many checkboxes, input boxes and textareas as you like. This will allow you to add the majority of miscellaneous options you need. Checkboxes to turn stuff on and off and inputs and textareas for any bits of text that you can't fit in using built in WordPress functionality. To turn these features on you need to add this to the ab_options_set variable:</p>
 
 <pre class="doc_code">
+$dropdowns['Portfolio Columns'] = array('1_col'=>'1 Column', '2_cols'=>'2 Columns', '3_cols'=>'3 Columns', '4_cols'=>'4 Columns');
 $checkboxes = array('show_photos'=>'Show Photos on front', 'option_2'=>'Option 2');
 $inputs = array('copyright'=>'Copyright text for footer', 'option_3'=>'Option 3');
 $textareas = array('footer_copy'=>'Footer Copy', 'option_4'=>'Option 4');
-$ab_options_set = array('checkboxes'=>$checkboxes,
+$ab_options_set = array('dropdowns'=>$dropdowns,
+						'checkboxes'=>$checkboxes,
                         'inputs'=>$inputs,
                         'textareas'=>$textareas);
 </pre>
 	
-	<p>The keys array being set in the checkboxes, inputs and textareas variables is the input name and the values are what appears as the label when they're printed. To print them in your theme you need to add 'ab_' to the key for example the 'show_photos' checkbox one would be printed as:</p>
+	<p>The keys array being set in the checkboxes, inputs and textareas variables is the input name and the values are what appears as the label when they're printed. For dropboxes you need to specify a separate key name for each dropdown box you want. To print them in your theme you need to add 'ab_' to the key for example the 'show_photos' checkbox one would be printed as:</p>
 	
 <pre class="doc_code">
 &lt;?php if(get_option('ab_show_photos')): ?&gt;

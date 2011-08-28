@@ -78,6 +78,20 @@
 										</td>
 									</tr>
 								<?php endif; ?>
+								<?php if(isset($ab_options_set['dropdowns'])): foreach($ab_options_set['dropdowns'] as $key=>$dd): ?>
+									<?php $name =  'ab_' .strtolower(str_replace(' ', '_', $key)); ?>
+									<?php $op = get_option($name); echo $op; ?>
+									<tr valign="top">
+										<th scope="row"><?php echo $key; ?>:</th>
+										<td>
+											<select name="<?php echo $name; ?>">
+												<?php foreach($dd as $value=>$name): ?>
+													<option <?php if($op==$value){ echo 'selected="selected"';} ?> value="<?php echo $value; ?>"><?php echo $name; ?></option>
+												<?php endforeach; ?>
+											</select>
+										</td>
+									</tr>
+								<?php endforeach; endif; ?>
 								<?php if(isset($ab_options_set['checkboxes'])): foreach($ab_options_set['checkboxes'] as $key=>$cb): ?>
 									<?php $name='ab_'.$key; ?>
 									<tr valign="top">

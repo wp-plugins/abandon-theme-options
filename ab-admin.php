@@ -21,7 +21,7 @@
 Plugin Name: Abandon Themes Admin
 Plugin URI: http://abandon.ie/517/abandon-options-plugin/
 Description: This is a plugin to allow a template designer to easily add options.
-Version: 0.5.2
+Version: 0.5.3
 Author: Abban Dunne
 Author URI: http://abandon.ie
 License: GPL2
@@ -56,6 +56,12 @@ function ab_custom_options(){
 	}
 	if(isset($ab_options_set['apple_icon'])){
 		register_setting('ab_custom_options', 'ab_apple_icon');
+	}
+	if(isset($ab_options_set['dropdowns'])){
+		foreach($ab_options_set['dropdowns'] as $key=>$cb){
+			$name='ab_'.strtolower(str_replace(' ', '_', $key));
+			register_setting('ab_custom_options', (string)$name);
+		}
 	}
 	if(isset($ab_options_set['checkboxes'])){
 		foreach($ab_options_set['checkboxes'] as $key=>$cb){
