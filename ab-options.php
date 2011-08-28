@@ -80,7 +80,7 @@
 								<?php endif; ?>
 								<?php if(isset($ab_options_set['dropdowns'])): foreach($ab_options_set['dropdowns'] as $key=>$dd): ?>
 									<?php $name =  'ab_' .strtolower(str_replace(' ', '_', $key)); ?>
-									<?php $op = get_option($name); echo $op; ?>
+									<?php $op = get_option($name); ?>
 									<tr valign="top">
 										<th scope="row"><?php echo $key; ?>:</th>
 										<td>
