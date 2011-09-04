@@ -20,15 +20,19 @@ This is a WordPress plugin aimed at template designers who have mid range experi
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Whats coming soon? =
 
-An answer to that question.
+Next thing I'm gonna add is a colour picker option. Then I'm going to make the logo, favicon and Apple icon uploads work better. 
 
 == Screenshots ==
 
 1. Here's how the options look in the admin panel with everything turned on screenshot-1.(png|jpg|jpeg|gif). 
 
 == Changelog ==
+
+= 0.6 =
+Added grouping, options can now be grouped into separate sections on the theme options page.
+Cleaned up the code, created classes for handling the groups and the main options. This will allow for future scalability.
 
 = 0.5.3 =
 Added functionality for dropdown boxes.

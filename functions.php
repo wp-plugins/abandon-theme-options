@@ -6,11 +6,10 @@ function ab_customise_core(){
 	This sets up the custom editor styles
 	------------------------------------------*/
 	if(isset($ab_options_set['mce_styles'])){
-		/* This is for adding Custom CSS styles on WYSIWYG Editor. Gives you more type styling options*/
 		if (!function_exists('myCustomTinyMCE')){
 			function myCustomTinyMCE($init){
 				global $ab_options_set;
-				$init['theme_advanced_buttons2_add_before'] = 'styleselect'; // Adds the buttons at the begining. (theme_advanced_buttons2_add adds them at the end)
+				$init['theme_advanced_buttons2_add_before'] = 'styleselect';
 				$init['theme_advanced_styles'] = $ab_options_set['mce_styles'];
 				return $init;
 			}
@@ -22,11 +21,9 @@ function ab_customise_core(){
 	This sets up the custom contact options
 	------------------------------------------*/
 	if(isset($ab_options_set['custom_contact']) || isset($ab_options_set['contact_remove'])){
-		//This changes the contact info boxes in the user tab of the admin panel
 		function add_twitter_contactmethod($contactmethods){
 			global $ab_options_set;
 			if(isset($ab_options_set['custom_contact'])){
-				// Add Contacts
 				$contacts=$ab_options_set['custom_contact'];
 				foreach($contacts as $key=>$contact){
 					$contactmethods[$key] = $contact;
@@ -35,7 +32,6 @@ function ab_customise_core(){
 			
 			if(isset($ab_options_set['custom_contact'])){
 				$remove=$ab_options_set['contact_remove'];
-				// Remove Contacts
 				foreach($remove as $rem){
 					unset($contactmethods[$rem]);
 				}

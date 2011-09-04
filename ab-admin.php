@@ -19,13 +19,17 @@
 
 
 Plugin Name: Abandon Themes Admin
-Plugin URI: http://abandon.ie/517/abandon-options-plugin/
+Plugin URI: http://abandon.ie/abandon-options-plugin/
 Description: This is a plugin to allow a template designer to easily add options.
-Version: 0.5.3
+Version: 0.6
 Author: Abban Dunne
 Author URI: http://abandon.ie
 License: GPL2
 */
+
+include_once('classes/option-groups.class.php');
+include_once('classes/option-main.class.php');
+include_once('functions.php');
 
 //Adds the menu item
 function ab_custom_actions(){
@@ -35,63 +39,14 @@ function ab_custom_actions(){
 }
 add_action('admin_menu', 'ab_custom_actions');
 
-add_action('admin_init', 'ab_custom_options', 9,1);
-function ab_custom_options(){
-	global $ab_options_set;
-
-	if(isset($ab_options_set['tracking'])){
-		register_setting('ab_custom_options', 'ab_tracking');
-	}
-	if(isset($ab_options_set['template_styles'])){
-		register_setting('ab_custom_options', 'ab_template_styles');
-	}
-	if(isset($ab_options_set['layout'])){
-		register_setting('ab_custom_options', 'ab_layout');
-	}
-	if(isset($ab_options_set['favicon'])){
-		register_setting('ab_custom_options', 'ab_favicon');
-	}
-	if(isset($ab_options_set['logo'])){
-		register_setting('ab_custom_options', 'ab_logo');
-	}
-	if(isset($ab_options_set['apple_icon'])){
-		register_setting('ab_custom_options', 'ab_apple_icon');
-	}
-	if(isset($ab_options_set['dropdowns'])){
-		foreach($ab_options_set['dropdowns'] as $key=>$cb){
-			$name='ab_'.strtolower(str_replace(' ', '_', $key));
-			register_setting('ab_custom_options', (string)$name);
-		}
-	}
-	if(isset($ab_options_set['checkboxes'])){
-		foreach($ab_options_set['checkboxes'] as $key=>$cb){
-			$name='ab_'.$key;
-			register_setting('ab_custom_options', $name);
-		}
-	}
-	if(isset($ab_options_set['inputs'])){
-		foreach($ab_options_set['inputs'] as $key=>$cb){
-			$name='ab_'.$key;
-			register_setting('ab_custom_options', $name);
-		}
-	}
-	if(isset($ab_options_set['textareas'])){
-		foreach($ab_options_set['textareas'] as $key=>$cb){
-			$name='ab_'.$key;
-			register_setting('ab_custom_options', $name);
-		}
-	}
-}
-
 //This includes the admin page
 function ab_custom(){
-	global $wpdb, $ab_options_set;
+	global $wpdb, $ab_options_set, $groups, $main_options;
 	include_once("ab-options.php");
 }
 
 //This includes the docs
 function ab_custom_docs(){
-	global $wpdb, $ab_options_set;
 	echo '<div class="wrap">';
 	if(file_exists(TEMPLATEPATH .'/documentation.html')){
 		include_once(TEMPLATEPATH .'/documentation.html');
@@ -101,6 +56,22 @@ function ab_custom_docs(){
 	echo '</div>';
 }
 
+//sets up the options objects
+function ab_custom_options(){
+	global $ab_options_set, $groups, $main_options;
+	
+	foreach($ab_options_set['groups'] as $group):
+		$name = strtolower(str_replace(' ', '_', $group['name']));
+		$groups[$name] = new ab_option_group($group);
+		$groups[$name]->register_settings();
+	endforeach;
+	
+	unset($ab_options_set['groups']);
+	
+	$main_options = new ab_option_main($ab_options_set);
+	$main_options->register_settings();
+}
+add_action('admin_init', 'ab_custom_options', 9,1);
 
 //Adds style sheet to the admin panel
 function custom_admin_css(){
@@ -112,8 +83,7 @@ add_action('admin_head', 'custom_admin_css');
 //turn on Thickbox in the options panel
 function ab_admin_attachments(){
 	wp_enqueue_script('media-upload');
-	wp_enqueue_script('thickbox');
-	//echo WP_PLUGIN_URL.'/ab-admin/js/script.js';		
+	wp_enqueue_script('thickbox');	
 	wp_register_script('my-upload', WP_PLUGIN_URL.'/abandon-theme-options/js/script.js', array('jquery','media-upload','thickbox'));
 	wp_enqueue_script('my-upload');
 }
@@ -124,7 +94,4 @@ if (isset($_GET['page']) && $_GET['page'] == 'ab_custom') {
 	add_action('admin_print_scripts', 'ab_admin_attachments');
 	add_action('admin_print_styles', 'ab_admin_styles');
 }
-
-include_once('functions.php');
-
 ?>

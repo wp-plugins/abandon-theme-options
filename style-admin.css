@@ -19,3 +19,6 @@
 	color:#666;
 	font-style: italic;
 }
+h3#settings:hover, h3#settings:focus, h3#donate:hover, h3#donate:focus{
+	cursor: default !important;
+}

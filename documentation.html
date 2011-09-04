@@ -216,6 +216,25 @@ $ab_options_set = array('dropdowns'=>$dropdowns,
 &lt;?php endif; ?&gt;
 </pre>
 	
+	<h4>Grouping form elements</h4>
+	<p>You can also add groups of these options. If, for example, you wanted to group together some options for the layout of a portfolio page you can add something like the following to the ab_options_set array:</p>
+
+<pre class="doc_code">
+$portfoliodropdowns['Dropdown One'] = array('test_dropdown'=>'Test Dropdown');
+$portfolioinputs = array('test_one'=>'Test One');
+$portfoliotextareas = array('test_2'=>'Test Two');
+$portfoliocheckboxes = array('test_three'=>'Test Three');
+$groups[] = array('name'=>'Portfolio Options', 'description'=>'Here is where you can pick your portfolio options.', 'inputs'=>$portfolioinputs, 'textareas'=>$portfoliotextareas, 'checkboxes' => $portfoliocheckboxes, 'dropdowns' => $portfoliodropdowns);
+</pre>
+
+	<p>And add it to the ab_options_set array like this:</p>
+
+<pre class="doc_code">
+$ab_options_set = array('groups'=>$groups);
+</pre>
+
+	<p>It will then display those options in their own separate section on the theme options page of the admin panel, the name being passed is the name of the section and a description will be displayed too if passed. You can then print them in the theme the same way as normal. Remember that the $groups variable is an array containing arrays, so you can add as many groups to it as you like.</p>
+
 	<a name="ptypes"></a>
 	<h3>8. Custom Post Types &amp; Taxonomies</h3>
 	<p>This is probably the most difficult feature of the plugin to set up. This lets you set up as many custom post types as you like. What you need to do is save an array with the post type name as the key into the ab_otions_set variable. In this array you set up the various options. I'm going to set up a portfolio post type by adding the following code:</p>
