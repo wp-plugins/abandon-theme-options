@@ -30,6 +30,9 @@ Next thing I'm gonna add is a colour picker option. Then I'm going to make the l
 
 == Changelog ==
 
+= 0.6.1 =
+Fixed main options not being registered by WordPress.
+
 = 0.6 =
 Added grouping, options can now be grouped into separate sections on the theme options page.
 Cleaned up the code, created classes for handling the groups and the main options. This will allow for future scalability.

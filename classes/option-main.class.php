@@ -39,6 +39,18 @@ class ab_option_main extends ab_option_group {
 	
 	function register_settings(){
 		parent::register_settings();
+		
+		if($this->template_styles) register_setting('ab_custom_options', 'ab_template_styles');
+		
+		if($this->layout) register_setting('ab_custom_options', 'ab_layout');
+		
+		if($this->logo) register_setting('ab_custom_options', 'ab_logo');
+		
+		if($this->favicon) register_setting('ab_custom_options', 'ab_favicon');
+		
+		if($this->apple_icon) register_setting('ab_custom_options', 'ab_apple_icon');
+		
+		if($this->tracking) register_setting('ab_custom_options', 'ab_tracking');
 	}
 	
 	function print_settings(){
@@ -51,9 +63,9 @@ class ab_option_main extends ab_option_group {
 						<?php if($this->template_styles) $this->print_admin_template_styles();  ?>
 						<?php if($this->layout) $this->print_admin_layout();  ?>
 						<?php if($this->logo) $this->print_admin_logo();  ?>
-						<?php if($this->logo) $this->print_admin_favicon();  ?>
-						<?php if($this->logo) $this->print_admin_apple_icon();  ?>
-						<?php if($this->logo) $this->print_admin_tracking();  ?>
+						<?php if($this->favicon) $this->print_admin_favicon();  ?>
+						<?php if($this->apple_icon) $this->print_admin_apple_icon();  ?>
+						<?php if($this->tracking) $this->print_admin_tracking();  ?>
 						<?php if($this->dropdowns) $this->print_admin_dropdowns();  ?>
 						<?php if($this->checkboxes) $this->print_admin_checkboxes();  ?>
 						<?php if($this->inputs) $this->print_admin_inputs();  ?>

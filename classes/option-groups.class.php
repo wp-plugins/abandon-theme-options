@@ -32,25 +32,25 @@ class ab_option_group {
 	
 	function register_settings(){
 		
-		foreach($this->dropdowns as $key=>$cb):
+		if($this->dropdowns): foreach($this->dropdowns as $key=>$cb):
 			$name='ab_'.strtolower(str_replace(' ', '_', $key));
 			register_setting('ab_custom_options', (string)$name);
-		endforeach;
+		endforeach; endif;
 
-		foreach($this->checkboxes as $key=>$cb):
+		if($this->checkboxes): foreach($this->checkboxes as $key=>$cb):
 			$name='ab_'.$key;
 			register_setting('ab_custom_options', $name);
-		endforeach;
+		endforeach; endif;
 
-		foreach($this->inputs as $key=>$cb):
+		if($this->inputs): foreach($this->inputs as $key=>$cb):
 			$name='ab_'.$key;
 			register_setting('ab_custom_options', $name);
-		endforeach;
+		endforeach; endif;
 
-		foreach($this->textareas as $key=>$cb):
+		if($this->textareas): foreach($this->textareas as $key=>$cb):
 			$name='ab_'.$key;
 			register_setting('ab_custom_options', $name);
-		endforeach;
+		endforeach; endif;
 
 	}
 	
