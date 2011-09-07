@@ -23,6 +23,8 @@ class ab_option_main extends ab_option_group {
 		
 		$this->name = 'General Settings';
 		
+		$this->slug = strtolower(str_replace(' ', '_', $this->name));
+		
 		if(isset($var['template_styles'])) $this->template_styles = $var['template_styles'];
 		
 		if(isset($var['layout'])) $this->layout = $var['layout'];
@@ -74,6 +76,31 @@ class ab_option_main extends ab_option_group {
 				</div>
 			</div>
 		</div><?php
+	}
+	
+	function print_tab(){
+		echo '<li><a class="selected ' .$this->slug .'" href="#' .$this->slug .'">' .$this->name .'</a></li>';
+	}
+	
+	function print_fancy_settings(){
+		?><div id="<?php echo $this->slug; ?>">
+			<a name="<?php echo $this->slug; ?>"></a>	
+			<h3><?php echo $this->name ?></h3>
+			<?php if($this->description) echo '<p>' .$this->description .'</p>';  ?>
+			<table class="form-table">
+				<?php if($this->template_styles) $this->print_admin_template_styles();  ?>
+				<?php if($this->layout) $this->print_admin_layout();  ?>
+				<?php if($this->logo) $this->print_admin_logo();  ?>
+				<?php if($this->favicon) $this->print_admin_favicon();  ?>
+				<?php if($this->apple_icon) $this->print_admin_apple_icon();  ?>
+				<?php if($this->tracking) $this->print_admin_tracking();  ?>
+				<?php if($this->dropdowns) $this->print_admin_dropdowns();  ?>
+				<?php if($this->checkboxes) $this->print_admin_checkboxes();  ?>
+				<?php if($this->inputs) $this->print_admin_inputs();  ?>
+				<?php if($this->textareas) $this->print_admin_textareas();  ?>
+			</table>
+		</div>
+		<?php
 	}
 	
 	function print_admin_template_styles(){

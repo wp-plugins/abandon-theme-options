@@ -19,6 +19,8 @@ class ab_option_group {
 		
 		if(isset($var['name'])) $this->name = $var['name'];
 		
+		$this->slug = strtolower(str_replace(' ', '_', $this->name));
+		
 		if(isset($var['description'])) $this->description = $var['description'];
 		
 		if(isset($var['dropdowns'])) $this->dropdowns = $var['dropdowns'];
@@ -31,7 +33,7 @@ class ab_option_group {
 	}
 	
 	function register_settings(){
-		
+	
 		if($this->dropdowns): foreach($this->dropdowns as $key=>$cb):
 			$name='ab_'.strtolower(str_replace(' ', '_', $key));
 			register_setting('ab_custom_options', (string)$name);
@@ -51,7 +53,7 @@ class ab_option_group {
 			$name='ab_'.$key;
 			register_setting('ab_custom_options', $name);
 		endforeach; endif;
-
+		
 	}
 	
 	function print_settings(){
@@ -69,6 +71,25 @@ class ab_option_group {
 				</div>
 			</div>
 		</div><?php
+	}
+	
+	function print_tab(){
+		echo '<li><a class="' .$this->slug .'" href="#' .$this->slug .'">' .$this->name .'</a></li>';
+	}
+	
+	function print_fancy_settings(){
+		?><div id="<?php echo $this->slug; ?>">
+			<a name="<?php echo $this->slug; ?>"></a>
+			<h3><?php echo $this->name ?></h3>
+			<?php if($this->description) echo '<p>' .$this->description .'</p>';  ?>
+			<table class="form-table">
+				<?php if($this->dropdowns) $this->print_admin_dropdowns();  ?>
+				<?php if($this->checkboxes) $this->print_admin_checkboxes();  ?>
+				<?php if($this->inputs) $this->print_admin_inputs();  ?>
+				<?php if($this->textareas) $this->print_admin_textareas();  ?>
+			</table>
+		</div>
+		<?php
 	}
 	
 	function print_admin_dropdowns(){

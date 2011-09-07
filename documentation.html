@@ -16,6 +16,7 @@
 		<li><strong><a href="#boxes">Checkboxes, Input Boxes, Dropdowns and Textareas</a></strong> <span>These features let you add as many checkboxes, input boxes, dropdowns or textareas as you like. You can use it to add various other options that this plugin doesn't cover.</span></li>
 		<li><strong><a href="#ptypes">Custom Post Types &amp; Taxonomies</a></strong> <span>These features let you add as many checkboxes, input boxes or textareas as you like. You can use it to add various other options that this plugin doesn't cover.</span></li>
 		<li><strong><a href="#docs">Custom Documentation</a></strong> <span>This lets you add custom documentation that will replace this page on the users site.</span></li>
+		<li><strong><a href="#fancy">Fancy Admin</a></strong> <span>A fancier style for the admin menu.</span></li>
 	</ol>
 	
 	<p>To get this plugin to work with your theme all you have to do is create a function in your functions.php file like this:</p>
@@ -265,6 +266,14 @@ $ab_options_set = array('post_types'=>$post_types);
 	<h3>9. Adding Your Custom Documentation</h3>
 	<p>Adding your own documentation is also easy. You just create a page called documentation.html and save it into your theme. It will then appear here instead of this setup guide.</p>
 	
+	<a name="fancy"></a>
+	<h3>10. Fancy Admin Style</h3>
+	<p>There is a fancy version of the admin panel available, this looks a lot nicer than the standard panel but doesn't feel as integrated into WordPress. You can turn it on by adding the following the the ab_options_set array:</p>
+
+<pre class="doc_code">	
+$ab_options_set = array('fancy_admin'=>true);
+</pre>
+
 	<h3>Full Function Printout</h3>
 	<p>If you were to add every single feature I've documented above your function should look something like this:</p>
 	
@@ -284,8 +293,15 @@ function ab_set_options(){
     $post_types['Portfolio'] = array('singular'=>'Portfolio','plural'=>'Portfolio Items', 'supports'=>$supports, 'categories'=>TRUE, 'tags'=>TRUE);
     $supports = array('title', 'editor');
     $post_types['Skill Feed'] = array('singular'=>'Skill Feed','plural'=>'Feed Items', 'supports'=>$supports, 'categories'=>TRUE, 'tags'=>TRUE);
+    $portfoliodropdowns['Dropdown One'] = array('test_dropdown'=>'Test Dropdown');
+    $portfolioinputs = array('test_one'=>'Test One');
+    $portfoliotextareas = array('test_2'=>'Test Two');
+    $portfoliocheckboxes = array('test_three'=>'Test Three');
+    $groups[] = array('name'=>'Portfolio Options', 'description'=>'Here is where you can pick your portfolio options.', 'inputs'=>$portfolioinputs, 'textareas'=>$portfoliotextareas, 'checkboxes' => $portfoliocheckboxes, 'dropdowns' => $portfoliodropdowns);
+    
     $ab_options_set = array('template_styles'=>$styles,
                             'layout'=>$layout,
+                            'fancy_admin'=>true,
                             'tracking'=>true,
                             'favicon'=>true,
                             'logo'=>true,
@@ -296,7 +312,8 @@ function ab_set_options(){
                             'mce_styles'=>$mce_styles,
                             'custom_contact'=>$custom_contact,
                             'contact_remove'=>$contact_remove,
-                            'post_types'=>$post_types);
+                            'post_types'=>$post_types,
+                            'groups'=>$groups);
 }
 add_filter('init','ab_set_options',9,1);
 </pre>	

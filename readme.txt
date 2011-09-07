@@ -26,9 +26,15 @@ Next thing I'm gonna add is a colour picker option. Then I'm going to make the l
 
 == Screenshots ==
 
-1. Here's how the options look in the admin panel with everything turned on screenshot-1.(png|jpg|jpeg|gif). 
+1. Here's how the options look in the admin panel with everything turned on screenshot-1.(png|jpg|jpeg|gif).
+
+2. Here's how the options look in the fancy admin panel with everything turned on screenshot-2.(png|jpg|jpeg|gif). 
 
 == Changelog ==
+
+= 0.7 =
+Added a fancy version of the admin panel.
+Updated the documentation.
 
 = 0.6.1 =
 Fixed main options not being registered by WordPress.
