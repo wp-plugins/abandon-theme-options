@@ -25,7 +25,7 @@ h3#settings:hover, h3#settings:focus, h3#donate:hover, h3#donate:focus{
 
 #ab_options{
 	margin-top: 20px;
-	width:800px;
+	width:900px;
 	background: #ddd;
 	border: 1px solid #eee;
 	margin-bottom: 24px;
@@ -104,7 +104,7 @@ h3#settings:hover, h3#settings:focus, h3#donate:hover, h3#donate:focus{
 #content-holder{
 	display: block;
 	float: left;
-	width:598px;
+	width:698px;
 	border-left: 1px solid #ccc;
 	background: #fff;
 	margin-bottom: 1px;
@@ -117,7 +117,7 @@ h3#settings:hover, h3#settings:focus, h3#donate:hover, h3#donate:focus{
 }
 #fancy_submit{
 	float: right;
-	width:599px;
+	width:699px;
 	border-left: 1px solid #ccc;
 	background: #fff;
 	margin-bottom: 1px;
