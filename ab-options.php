@@ -35,13 +35,11 @@
 				jQuery(function(){
 					jQuery('#content-holder > div + div').hide();
 					jQuery('#tabs a').click(function(){
-						var i = jQuery(this).attr('class');
 						jQuery('#tabs a').removeClass('selected');
 						jQuery(this).addClass('selected');
-						jQuery('#content-holder > div').fadeOut(function(){
-							jQuery('#'+i).fadeIn();
-						});
-						
+						jQuery('#content-holder > div').hide();
+						var activeTab = jQuery(this).attr("href");
+						jQuery(activeTab).fadeIn();
 						return false;
 					});
 				});
