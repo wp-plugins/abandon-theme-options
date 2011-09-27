@@ -7,21 +7,20 @@
 			<div id="ab_options">
 				<div id="icon-ab-custom" class="icon32"></div>
 			    <h2>Custom Theme Options</h2>
-			    	<div id="tabs">
-						<ul>
-							<?php $main_options->print_tab(); ?>
-							<?php foreach($groups as $group): $group->print_tab(); endforeach; ?>
-						</ul>
-						<?php if(!isset($ab_options_set['remove_donation'])): ?>
-							<div id="donate">
-								<?php include('donate.php'); ?>
-							</div>
-						<?php endif; ?>
-					</div>
-					<div id="content-holder">
-						<?php $main_options->print_fancy_settings(); ?>
-						<?php foreach($groups as $group): $group->print_fancy_settings(); endforeach; ?>
-					</div>
+		    	<div id="tabs">
+					<ul>
+						<?php $main_options->print_tab(); ?>
+						<?php foreach($groups as $group): $group->print_tab(); endforeach; ?>
+					</ul>
+					<?php if(!isset($ab_options_set['remove_donation'])): ?>
+						<div id="donate">
+							<?php include('donate.php'); ?>
+						</div>
+					<?php endif; ?>
+				</div>
+				<div id="content-holder">
+					<?php $main_options->print_fancy_settings(); ?>
+					<?php foreach($groups as $group): $group->print_fancy_settings(); endforeach; ?>
 					<table class="form-table" id="fancy_submit">
 						<tr valign="top">
 							<td>
@@ -29,7 +28,8 @@
 							</td>
 						</tr>
 					</table>
-					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
 			</div>
 			<script>
 				jQuery(function(){
