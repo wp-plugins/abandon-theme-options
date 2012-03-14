@@ -32,6 +32,9 @@ Next thing I'm gonna add is a colour picker option. Then I'm going to make the l
 
 == Changelog ==
 
+= 0.7.3 =
+Fixed bugs that appear when theme doesn't use groups.
+
 = 0.7.2 =
 Fixed small html bug on the fancy layout.
 

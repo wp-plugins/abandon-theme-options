@@ -10,7 +10,7 @@
 		    	<div id="tabs">
 					<ul>
 						<?php $main_options->print_tab(); ?>
-						<?php foreach($groups as $group): $group->print_tab(); endforeach; ?>
+						<?php if($groups) foreach($groups as $group) $group->print_tab(); ?>
 					</ul>
 					<?php if(!isset($ab_options_set['remove_donation'])): ?>
 						<div id="donate">
@@ -20,7 +20,7 @@
 				</div>
 				<div id="content-holder">
 					<?php $main_options->print_fancy_settings(); ?>
-					<?php foreach($groups as $group): $group->print_fancy_settings(); endforeach; ?>
+					<?php if($groups) foreach($groups as $group) $group->print_fancy_settings(); ?>
 					<table class="form-table" id="fancy_submit">
 						<tr valign="top">
 							<td>
@@ -50,7 +50,7 @@
 		    <br class="clear">
 			<div class="postbox-container" style="width: 69%;">
 				<?php $main_options->print_settings(); ?>
-				<?php foreach($groups as $group): $group->print_settings(); endforeach; ?>
+				<?php if($groups) foreach($groups as $group) $group->print_settings(); ?>
 							
 				<table class="form-table">
 					<tr valign="top">
