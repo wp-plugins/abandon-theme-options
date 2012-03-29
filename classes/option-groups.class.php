@@ -17,9 +17,10 @@ class ab_option_group {
 		
 		$this->type = 'group';
 		
-		if(isset($var['name'])) $this->name = $var['name'];
-		
-		$this->slug = strtolower(str_replace(' ', '_', $this->name));
+		if(isset($var['name'])){
+			$this->name = $var['name'];
+			$this->slug = strtolower(str_replace(' ', '_', $this->name));
+		}
 		
 		if(isset($var['description'])) $this->description = $var['description'];
 		
@@ -34,22 +35,22 @@ class ab_option_group {
 	
 	function register_settings(){
 	
-		if($this->dropdowns): foreach($this->dropdowns as $key=>$cb):
+		if(isset($this->dropdowns)): foreach($this->dropdowns as $key=>$cb):
 			$name='ab_'.strtolower(str_replace(' ', '_', $key));
 			register_setting('ab_custom_options', (string)$name);
 		endforeach; endif;
 
-		if($this->checkboxes): foreach($this->checkboxes as $key=>$cb):
+		if(isset($this->checkboxes)): foreach($this->checkboxes as $key=>$cb):
 			$name='ab_'.$key;
 			register_setting('ab_custom_options', $name);
 		endforeach; endif;
 
-		if($this->inputs): foreach($this->inputs as $key=>$cb):
+		if(isset($this->inputs)): foreach($this->inputs as $key=>$cb):
 			$name='ab_'.$key;
 			register_setting('ab_custom_options', $name);
 		endforeach; endif;
 
-		if($this->textareas): foreach($this->textareas as $key=>$cb):
+		if(isset($this->textareas)): foreach($this->textareas as $key=>$cb):
 			$name='ab_'.$key;
 			register_setting('ab_custom_options', $name);
 		endforeach; endif;
@@ -63,10 +64,10 @@ class ab_option_group {
 				<div class="inside">
 					<?php if($this->description) echo '<p>' .$this->description .'</p>';  ?>
 					<table class="form-table">
-						<?php if($this->dropdowns) $this->print_admin_dropdowns();  ?>
-						<?php if($this->checkboxes) $this->print_admin_checkboxes();  ?>
-						<?php if($this->inputs) $this->print_admin_inputs();  ?>
-						<?php if($this->textareas) $this->print_admin_textareas();  ?>
+						<?php if(isset($this->dropdowns)) $this->print_admin_dropdowns();  ?>
+						<?php if(isset($this->checkboxes)) $this->print_admin_checkboxes();  ?>
+						<?php if(isset($this->inputs)) $this->print_admin_inputs();  ?>
+						<?php if(isset($this->textareas)) $this->print_admin_textareas();  ?>
 					</table>
 				</div>
 			</div>
@@ -83,10 +84,10 @@ class ab_option_group {
 			<h3><?php echo $this->name ?></h3>
 			<?php if($this->description) echo '<p>' .$this->description .'</p>';  ?>
 			<table class="form-table">
-				<?php if($this->dropdowns) $this->print_admin_dropdowns();  ?>
-				<?php if($this->checkboxes) $this->print_admin_checkboxes();  ?>
-				<?php if($this->inputs) $this->print_admin_inputs();  ?>
-				<?php if($this->textareas) $this->print_admin_textareas();  ?>
+				<?php if(isset($this->dropdowns)) $this->print_admin_dropdowns();  ?>
+				<?php if(isset($this->checkboxes)) $this->print_admin_checkboxes();  ?>
+				<?php if(isset($this->inputs)) $this->print_admin_inputs();  ?>
+				<?php if(isset($this->textareas)) $this->print_admin_textareas();  ?>
 			</table>
 		</div>
 		<?php

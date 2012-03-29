@@ -21,7 +21,7 @@
 Plugin Name: Abandon Themes Admin
 Plugin URI: http://abandon.ie/abandon-options-plugin/
 Description: This is a plugin to allow a template designer to easily add options.
-Version: 0.7.3
+Version: 0.7.4
 Author: Abban Dunne
 Author URI: http://abandon.ie
 License: GPL2
@@ -34,8 +34,8 @@ include_once('functions.php');
 //Adds the menu item
 function ab_custom_actions(){
 	$url=WP_PLUGIN_URL .'/abandon-theme-options/icon.png';
-    add_menu_page("Theme Options", "Theme Options", 1, "ab_custom", "ab_custom", $url);
-    add_submenu_page("ab_custom", "Documentation", "Documentation", 1, "doc", "ab_custom_docs");
+    add_menu_page("Theme Options", "Theme Options", "edit_pages", "ab_custom", "ab_custom", $url);
+    add_submenu_page("ab_custom", "Documentation", "Documentation", "edit_pages", "doc", "ab_custom_docs");
 }
 add_action('admin_menu', 'ab_custom_actions');
 
@@ -60,7 +60,7 @@ function ab_custom_docs(){
 function ab_custom_options(){
 	global $ab_options_set, $groups, $main_options;
 	
-	if($ab_options_set['groups']): 
+	if(isset($ab_options_set['groups'])): 
 		foreach($ab_options_set['groups'] as $group):
 			$name = strtolower(str_replace(' ', '_', $group['name']));
 			$groups[$name] = new ab_option_group($group);
